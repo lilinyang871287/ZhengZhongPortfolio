@@ -3,16 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lilinyang Portfolio</title>
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lilinyang Portfolio</title>
-
+    <title>郑中团体 ZZ WORKSHOP</title>
     <meta name="robots" content="noindex, nofollow">
-    
-    <meta name="description" content="(Lilinyang Portfolio)展示涵蓋介面設計、品牌視覺、產品文創及新媒體運營等領域項目。">
-
+    <meta name="description" content="郑中团体 ZZ WORKSHOP 展示涵蓋介面設計、品牌視覺、產品文創及新媒體運營等領域項目。">
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 256%22><rect width=%22256%22 height=%22256%22 fill=%22none%22/><path d=%22M128,24a8,8,0,0,1,8,8V64a8,8,0,0,1-16,0V32A8,8,0,0,1,128,24Zm0,144a8,8,0,0,0-8,8v32a8,8,0,0,0,16,0V176A8,8,0,0,0,128,168ZM216,112H184a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16ZM72,112H40a8,8,0,0,0,0,16H72a8,8,0,0,0,0-16Zm121.37,33.37a8,8,0,0,0-11.31,11.31l22.63,22.63a8,8,0,0,0,11.31-11.31ZM51.31,75.31A8,8,0,0,0,40,86.63L62.63,109.25a8,8,0,0,0,11.32-11.31Zm142-24a8,8,0,0,0-11.31-11.31L159.37,62.63a8,8,0,0,0,11.31,11.31ZM73.94,182.06a8,8,0,0,0-11.31,0L40,204.69a8,8,0,0,0,11.31,11.31l22.63-22.63A8,8,0,0,0,73.94,182.06Z%22 fill=%22%2334d399%22/></svg>">
     
@@ -21,15 +14,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web"></script>
 
     <style>
-        /* --- 1. 全局设置 --- */
         body { 
-            background-color: #000509; /* 更深邃的黑蓝底色 */
+            background-color: #000509; 
             color: #e2e8f0; 
             overflow-x: hidden; 
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
-        /* --- 2. Canvas 背景层 --- */
         #canvas-bg {
             position: fixed;
             top: 0;
@@ -40,16 +31,14 @@
             pointer-events: none;
         }
 
-        /* --- 3. 双语切换 --- */
         [lang="en"] { display: none; }
         body.en-mode [lang="cn"] { display: none !important; }
         body.en-mode [lang="en"] { display: block !important; }
         body.en-mode span[lang="en"] { display: inline !important; }
         span[lang="cn"] { display: inline; }
 
-        /* --- 4. 玻璃拟态 --- */
         .glass-nav {
-            background: rgba(0, 5, 9, 0.6); /* 配合新底色调整透明度 */
+            background: rgba(0, 5, 9, 0.6);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
@@ -66,34 +55,10 @@
         
         .glass-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(16, 185, 129, 0.3); /* 呼应背景的绿色 */
+            border-color: rgba(16, 185, 129, 0.3);
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
         }
 
-        /* --- 5. 巨型标题发光特效 (V3 透光版) --- */
-        .glow-text {
-            text-shadow: none;
-            filter: url(#frosted-glow);
-            
-            /* 🟢 关键修改：透光度 */
-            /* 之前的 #ffffff 是不透明的。
-               改成 rgba(255, 255, 255, 0.7) 表示 70% 不透明度的白色。
-               你可以调节 0.7 这个数字：
-               - 0.5：非常透，像薄玻璃
-               - 0.8：半透，像磨砂亚克力
-               - 1.0：完全不透 (实心)
-            */
-            color: rgba(255, 255, 255, 0.6); 
-
-            
-            /* 🟢 可选增强：混合模式，加上这一行，能让文字和底下的极光背景融合得更自然 */
-            mix-blend-mode: overlay; 
-            
-            position: relative; 
-            z-index: 10;
-        }
-
-        /* --- 6. 图片容器 --- */
         .img-container {
             width: 100%;
             height: 240px;
@@ -105,12 +70,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top; /* 关键修改：强制让图片从顶部开始显示 */
+            object-position: top;
             transition: transform 0.6s ease;
         }
         .glass-card:hover .img-container img { transform: scale(1.08); }
 
-        /* --- 7. 筛选按钮 --- */
         .filter-btn {
             border: 1px solid rgba(255,255,255,0.1);
             color: #94a3b8;
@@ -118,7 +82,7 @@
             background: transparent;
         }
         .filter-btn:hover, .filter-btn.active {
-            background: rgba(16, 185, 129, 0.1); /* 绿色高亮 */
+            background: rgba(16, 185, 129, 0.1);
             border-color: #10b981;
             color: white;
         }
@@ -128,87 +92,55 @@
             height: 100%; width: 100%; color: #475569; background: linear-gradient(45deg, #0f172a, #1e293b);
         }
         
-        /* --- 8. 滚动条美化 --- */
-        /* 滚动条整体 */
         ::-webkit-scrollbar {
-            width: 10px;               /* 竖向滚动条宽度 */
-            height: 10px;              /* 横向滚动条高度 */
+            width: 10px;
+            height: 10px;
         }
-        
-        /* 滚动条轨道（背景）：设置为你的网页底色 #000509 */
         ::-webkit-scrollbar-track {
             background: #000509; 
         }
-        
-        /* 滚动条滑块：设置为深灰色，带圆角 */
         ::-webkit-scrollbar-thumb {
-            background: #1e293b;       /* 深灰 (Slate-800) */
-            border-radius: 5px;        /* 圆角 */
-            border: 2px solid #000509; /* 加上边框让滑块看起来有一点“悬浮感” */
+            background: #1e293b;
+            border-radius: 5px;
+            border: 2px solid #000509;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
         }
 
-        /* --- 9. 图片加载骨架/占位符 --- */
-        /* 加载动画：通过改变透明度，模拟“呼吸”效果 */
         @keyframes pulse-opacity {
             0% { opacity: 0.5; }
             50% { opacity: 0.8; }
             100% { opacity: 0.5; }
         }
         .placeholder-loading {
-            /* 容器背景色设置得更亮一点，与动画配合 */
             background-color: #1e293b; 
-            /* 启用脉冲动画 */
             animation: pulse-opacity 1.5s infinite ease-in-out;
         }
 
-/* 鼠标悬停在滑块上时：变亮一点 */
-::-webkit-scrollbar-thumb:hover {
-    background: #475569;       /* 亮灰 (Slate-600) */
-}
-            /* --- 10. 鼠标跟随反色圆点 --- */
-        #cursor-follower {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 24px;  /* 圆点大小，可以自己改 */
-            height: 24px;
-            background-color: white; /* 圆点本身是白色的 */
-            border-radius: 50%; /* 变成圆形 */
-            pointer-events: none; /* 让鼠标事件穿透它，不影响点击 */
-            mix-blend-mode: difference; /* 【核心魔法】反色模式！ */
-            z-index: 9999; /* 保证在最上层 */
-            transform: translate(-50%, -50%); /* 让鼠标指针在圆点中心 */
-            will-change: transform; /* 性能优化 *//* ...其他属性... */
-            will-change: transform; /* 👈 这一句必须有！ */
-            /* 还可以加上这一句，强制开启 3D 加速 */
-            transform: translate3d(-50%, -50%, 0); 
-            }
-                
-        </style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
 <body class="cn-mode selection:bg-emerald-500 selection:text-white">
 
     <svg width="0" height="0" style="position:absolute; overflow:hidden;">
         <filter id="frosted-glow" x="-50%" y="-50%" width="200%" height="200%">
-            
             <feMorphology operator="dilate" radius="8" in="SourceAlpha" result="thicken" />
-            
             <feGaussianBlur stdDeviation="6" in="thicken" result="blurred" />
-            
             <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="3" result="noise" />
-            
             <feComposite operator="in" in="noise" in2="blurred" result="noisyGlow" />
-            
             <feFlood flood-color="#10b981" flood-opacity="0.6" result="greenColor" />
-            
             <feComposite operator="in" in="greenColor" in2="noisyGlow" result="coloredGrain" />
-
             <feGaussianBlur stdDeviation="0.5" in="coloredGrain" result="softGrain" />
-            
             <feComponentTransfer in="softGrain" result="boostedGlow">
                 <feFuncA type="linear" slope="1.5" intercept="0" />
             </feComponentTransfer>
-
             <feMerge>
                 <feMergeNode in="boostedGlow" />
                 <feMergeNode in="SourceGraphic" />
@@ -216,79 +148,56 @@
         </filter>
     </svg>
 
-    <!-- 🌌 背景：更新为蓝绿极光色系 -->
     <canvas id="canvas-bg"></canvas>
-    <div id="cursor-follower"></div>
 
-    <!-- 导航栏 (保留原样) -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-white flex items-center gap-2 tracking-wider group">
-                <i class="ph ph-asterisk-simple text-emerald-400 group-hover:rotate-180 transition-transform duration-700"></i> 
-                Lilinyang.
-            </a>
+        <div class="container mx-auto px-6 md:px-8 py-6 flex justify-between items-center text-white">
+            <div class="text-sm tracking-widest font-medium">
+                郑中团体
+            </div>
             
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex space-x-8 text-sm text-gray-300 font-medium">
-                    <a href="#about" class="hover:text-emerald-400 transition"><span lang="cn">关于</span><span lang="en">About</span></a>
-                    <a href="#projects" class="hover:text-emerald-400 transition"><span lang="cn">作品</span><span lang="en">Work</span></a>
-                    <a href="#contact" class="hover:text-emerald-400 transition"><span lang="cn">联系</span><span lang="en">Contact</span></a>
+            <div class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase">
+                <a href="#zz" class="hover:text-emerald-400 transition-colors">ZZ</a>
+                <a href="#projects" class="hover:text-emerald-400 transition-colors">Work</a>
+                <a href="#about" class="hover:text-emerald-400 transition-colors">About</a>
+                <a href="#contact" class="hover:text-emerald-400 transition-colors">Contact</a>
+                <div class="flex items-center gap-3 ml-4 border border-white/20 px-3 py-1 rounded-full bg-white/5">
+                    <button id="lang-cn" class="hover:text-emerald-400 transition-colors font-bold">CN</button>
+                    <span class="opacity-30">|</span>
+                    <button id="lang-en" class="hover:text-emerald-400 transition-colors opacity-50">EN</button>
                 </div>
-                <button id="lang-btn" class="flex items-center gap-2 text-xs border border-gray-600 px-4 py-1.5 rounded-full hover:border-emerald-400 hover:text-emerald-400 transition font-mono bg-white/5">
-                    <i class="ph ph-translate"></i>
-                    <span class="font-bold" id="lang-text">CN / EN</span>
-                </button>
+            </div>
+
+            <div class="md:hidden flex items-center gap-2 border border-white/20 px-3 py-1 rounded-full bg-white/5 text-xs">
+                <button id="lang-cn-mobile" class="font-bold">CN</button>
+                <span class="opacity-30">|</span>
+                <button id="lang-en-mobile" class="opacity-50">EN</button>
             </div>
         </div>
     </nav>
 
-    <!-- 🌟  Hero 首屏 -->
-    <section class="h-screen w-full flex flex-col justify-between pt-24 pb-10 px-6 md:px-12 relative overflow-hidden">
-        
-        <!-- 中间：巨型 Portfolio 文字 -->
-        <div class="flex-1 flex items-center justify-center z-10" data-aos="zoom-out" data-aos-duration="1500">
-            <!-- 使用 vw 单位确保文字永远撑满屏幕宽度 -->
-            <h1 class="font-sans font-bold text-white leading-none tracking-tighter glow-text select-none mix-blend-overlay md:mix-blend-normal text-[19vw] md:text-[18vw]">
-                Portfolio
-            </h1>
-        </div>
-
-        <!-- 底部信息栏 (Grid 布局复刻原图) -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 z-20 text-sm font-light text-gray-300 items-end">
-            
-            <!-- 左侧：个人信息 -->
-            <div class="md:col-span-4 space-y-4" data-aos="fade-up" data-aos-delay="200">
-                <div>
-                    <p class="text-white font-medium text-lg block mb-1">@李林阳</p>
-                    <p class="opacity-70">Lilinyang</p>
-                </div>
-                <div class="flex flex-col gap-1">
-                    <p class="uppercase tracking-wider text-xs opacity-50">Telephone</p>
-                    <p class="font-mono text-emerald-300">+86 177******86</p>
-                </div>
-                <div class="flex flex-col gap-1">
-                    <p class="uppercase tracking-wider text-xs opacity-50">Mail</p>
-                    <p class="font-mono text-emerald-300">940213696@qq.com</p>
-                </div>
-            </div>
-
-            <!-- 中间留空 (占据空间) -->
-            <div class="hidden md:block md:col-span-4"></div>
-
-            <!-- 右侧：年份与标签 -->
-            <div class="md:col-span-4 flex flex-col md:items-end justify-end gap-4" data-aos="fade-up" data-aos-delay="400">
-                <p class="text-right opacity-80 hidden md:block tracking-widest">个人作品集</p>
-                <div class="flex items-baseline gap-2">
-                    <span class="text-4xl md:text-6xl font-light tracking-tight">© 2026</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- 装饰性光点 (模拟图片中 "i" 上面的那个光点) -->
-        <div class="absolute top-[25%] right-[15%] w-4 h-4 bg-white rounded-full blur-[2px] animate-pulse opacity-80 z-0 hidden md:block"></div>
+    <section id="zz" class="min-h-screen w-full flex flex-col relative bg-[#4e0af3] text-white z-20">
+        <main class="flex-1 flex items-center justify-center w-full px-8">
+            <svg 
+                id="_图层_2" 
+                data-name="图层 2" 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 1163.67 119.4"
+                class="w-full max-w-[90%] md:max-w-4xl lg:max-w-6xl drop-shadow-sm"
+            >
+                <g id="_图层_1-2" data-name="图层 1" fill="#ffffff">
+                    <path d="M926.06,7.27l10.48-1.69V1.93h-120.95l-2.66,9.47c-15.37-7.89-37.56-11.4-54.44-11.4-31.57,0-57.31,14.34-57.87,32.09h-.01v81.2l-6.6-1.53-48.2-62.89,51.02-42.29,6.59-2.18V1.93h-114.49v2.48l13.06,2.18v105.18l-13.06,1v3.66h116.83l1.77-9.77c17.78,8.51,32.18,12.76,50.97,12.76,34.01,0,61.73-15.53,62.23-34.73h.01V5.58l11.45,1.69v103.8l-11.45,1.69v3.66h115.8v-3.66l-10.48-1.69V7.27ZM616.22,6.58l34.11-2.18,34.11,2.18-68.22,56.55V6.58ZM646.17,113.94l-29.95-2.18v-38.36l19.08-15.81,41.52,54.17-30.65,2.18ZM757.99,115.8c-17.64,0-37.78-6.78-48.92-14.53l-2.54-52.56c9.52,10.4,29.1,13.57,48.22,16.65l2.13.35c26.16,4.25,50.88,8.26,50.88,26.01,0,11.68-17.44,24.09-49.77,24.09ZM764.34,49.77l-3.37-.55c-25.63-3.9-48.64-8.64-48.64-23.62,0-10.81,17.37-22,46.43-22,17.51,0,43.11,7.19,53.56,14.88l2.44,48.95c-9.85-11.13-30.38-14.44-50.42-17.67ZM908.64,111.07l-28.66,2.11-30.36-2.11v-51.7h59.02v51.7ZM908.64,55.75h-59.02V7.27l29.51-2.11,29.51,2.11v48.48Z"/>
+                    <path d="M573.97,77.61c-1.97-10.75-6.13-18.22-18-20.14,17.64-3.28,27.66-13.15,27.66-27.47,0-16.79-17.55-28.07-43.66-28.07h-65.53v3.66l11.06,1.69v103.8l-11.06,1.69v3.66h114.49v-3.66l-7.92-1.69-7.04-33.46ZM502.56,5.58h4.33v-.04h31.99c18.63,0,26.97,12.29,26.97,24.46,0,12.8-9.26,25.75-26.97,25.75h-36.32V5.58ZM534.21,113.6l-31.65-2.53v-51.7h36.86c7.87,0,14.47,4.37,15.69,10.38l8.46,41.32-29.38,2.53Z"/>
+                    <path d="M1132.6,2.09h-82.87v3.58l13.16,2.18v102.97l-13.16,2.18v3.58h80.67v-3.58l-53.42-2.18v-46.6h55.61c17.15,0,31.06-13.91,31.06-31.06s-13.91-31.06-31.06-31.06ZM1122.34,58.46l-45.35.57V7.26l45.35.59c13.97,0,25.3,11.33,25.3,25.3s-11.33,25.3-25.3,25.3Z"/>
+                    <polygon points="110.54 55.98 103.34 110.73 32.26 110.73 104.55 8.13 114.49 5.95 114.49 2.18 4.36 2.18 4.36 62.87 8.31 62.87 15.51 8.13 84.41 8.13 12.12 110.73 0 112.91 0 116.67 114.49 116.67 114.49 55.98 110.54 55.98"/>
+                    <path d="M372.41,5.86v-3.76h-143.43v.09h-110.13v60.69h3.95l7.2-54.75h68.9l-72.29,102.6-12.12,2.18v3.76h114.49v-60.69h-3.95l-7.2,54.75h-71.08L219.04,8.13l9.94-2.18v-.09l8.93,2.18,30.43,108.54h15.36l15.81-48.51,13.6,48.51h15.36l35.36-108.54,8.58-2.18ZM253.26,8.04h0s0,0,0,0h0ZM282.45,102.16l-26.44-94.32,26.67-1.98,14.08,52.4-14.3,43.9ZM298.03,5.86h0s0,0,0,0h0ZM300.83,5.86h12.28l-6.41,21.4-5.87-21.4ZM325.71,106.77h0s0,0,0,0h0ZM327.23,102.11l-17.79-64.87,9.62-31.39,38.82,2.18-30.65,94.08Z"/>
+                    <path d="M461.25,17.78c-10.92-11.13-25.89-17.25-42.17-17.25s-31.26,6.13-42.17,17.25c-10.73,10.94-16.64,25.7-16.64,41.55s5.91,30.62,16.64,41.55c10.91,11.13,25.89,17.25,42.17,17.25s31.25-6.13,42.17-17.25c10.73-10.94,16.64-25.7,16.64-41.55s-5.91-30.62-16.64-41.55ZM419.08,114.59c-27.1,0-39.45-28.64-39.45-55.26s12.34-55.26,39.45-55.26,39.45,28.64,39.45,55.26-12.34,55.26-39.45,55.26Z"/>
+                    <path d="M1037.52,17.78c-10.92-11.13-25.89-17.25-42.17-17.25s-31.26,6.13-42.17,17.25c-10.73,10.94-16.64,25.7-16.64,41.55s5.91,30.62,16.64,41.55c10.91,11.13,25.89,17.25,42.17,17.25s31.25-6.13,42.17-17.25c10.73-10.94,16.64-25.7,16.64-41.55s-5.91-30.62-16.64-41.55ZM995.35,114.59c-27.1,0-39.45-28.64-39.45-55.26s12.34-55.26,39.45-55.26,39.45,28.64,39.45,55.26-12.34,55.26-39.45,55.26Z"/>
+                </g>
+            </svg>
+        </main>
     </section>
 
-    <!-- 作品展示区域 -->
     <section id="projects" class="py-24 relative z-10 bg-[#000509]">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -316,14 +225,12 @@
                 </div>
             </div>
 
-            <!-- 项目网格 -->
             <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- JS 填充 -->
             </div>
         </div>
     </section>
 
-    <!-- 关于/技能 (样式微调适配新主题) -->
     <section id="about" class="py-24 relative z-10">
         <div class="absolute inset-0 bg-gradient-to-b from-[#000509] via-[#064e3b20] to-[#000509] -z-10 h-full"></div>
         <div class="container mx-auto px-6">
@@ -344,7 +251,6 @@
         </div>
     </section>
 
-    <!-- 底部 -->
     <footer id="contact" class="py-16 border-t border-white/5 bg-[#000509] relative z-20">
         <div class="container mx-auto px-6 text-center" data-aos="fade-up">
             <p class="text-3xl font-bold text-white mb-10"><span lang="cn">保持联系</span><span lang="en">Let's Connect</span></p>
@@ -378,7 +284,6 @@
         <i class="ph ph-arrow-up text-xl group-hover:-translate-y-1 transition-transform"></i>
     </button>
     
-    <!-- 🔴 项目详情弹窗-宽屏灯箱 -->
     <div id="project-modal" class="fixed inset-0 z-[100] hidden flex justify-center items-center p-2 md:p-4 backdrop-blur-xl bg-black/90 transition-opacity duration-300 opacity-0 pointer-events-none">
         <div class="relative w-full max-w-[90vw] h-[95vh] bg-[#0f172a] rounded-2xl overflow-hidden shadow-2xl flex flex-col border border-white/10 transform scale-95 transition-transform duration-300" id="modal-content">
             <div class="flex-none p-5 border-b border-white/10 bg-[#0f172a] z-20 flex justify-between items-center">
@@ -403,31 +308,21 @@
         </div>
     </div>
 
-    <!-- 脚本区 --><script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-
-        // 新增：打开模态框内的图片到新标签页，用于放大查看
         window.zoomImage = function() {
-            // 获取当前模态框中图片的 src
             const imgSrc = document.getElementById('modal-img').src;
             if (imgSrc) {
-                // 在新窗口中打开图片
                 window.open(imgSrc, '_blank');
             }
         };
         
-        // 新增：图片加载成功后移除占位符类
         window.removePlaceholder = function(imgElement) {
-            // 找到 img 的父容器 (div.img-container) 并移除占位符类
             imgElement.parentNode.classList.remove('placeholder-loading');
         };
             
-        // --- 0. 强制刷新回顶 (可选) ---
         if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
         
-        // ==========================================
-        // 1. 项目数据 (已更新为 WebP 格式，并已使用 jsDelivr 加速)
-        // ==========================================
         const projectsData = [
             { id: 1, category: "UI/UX", year: "2025", img: "https://cdn.jsdelivr.net/gh/lilinyang871287/LLYportfolio@main/p1-maisc.webp", titleCN: "澳门人工智能超算中心", titleEN: "Macau AI Supercomputing Center", descCN: "以“莲花”与“运算”为核心理念，构建区域性AI创新枢纽平台的可信数据空间。", descEN: "Trusted data space design inspired by 'Lotus' and 'Computing' concepts." },
             { id: 2, category: "Product", year: "2024", img: "https://cdn.jsdelivr.net/gh/lilinyang871287/LLYportfolio@main/p2-seal.webp", titleCN: "印迹·澳门火漆印章", titleEN: "Macao Imprint: Wax Seal", descCN: "灵感源自葡式碎石路，六边形与不规则石砖结合，记录澳门历史印迹。", descEN: "Inspired by Portuguese pavement patterns. Interlocking hexagonal designs." },
@@ -449,16 +344,12 @@
             { id: 18, category: "AI & IP", year: "2023", img: "https://cdn.jsdelivr.net/gh/lilinyang871287/LLYportfolio@main/p18-nft.webp", titleCN: "鱼鱼鱼 NFT", titleEN: "Fish Fish Fish NFT", descCN: "基于元宇宙概念的数字鱼IP。绘制120个NFT，涵盖4个稀有等级。", descEN: "Digital Fish IP for Metaverse. 120 NFTs across 4 rarity tiers." }
         ];
         
-        // ==========================================
-        // 2. Canvas 极光背景 (升级版：呼吸感 + 性能优化)
-        // ==========================================
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
-        let animationId; // 用于控制动画暂停
+        let animationId;
 
-        // 防抖 Resize
         function debounce(func, wait) {
             let timeout;
             return function () {
@@ -479,17 +370,16 @@
         class Particle {
             constructor() {
                 this.reset();
-                this.y = Math.random() * height; // 初始随机位置
+                this.y = Math.random() * height;
             }
 
             reset() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                // 🚀 首页渐变-速度调快：方向更随机，这里也改成 1.0 (或者 0.1, 1.2, 1.5 随你喜欢)
                 this.vx = (Math.random() - 0.5) * 1.8; 
                 this.vy = (Math.random() - 0.5) * 1.8;
-                this.baseSize = Math.random() * 300 + 300; // 基础大小
-                this.angle = Math.random() * Math.PI * 2; // 用于呼吸效果的相位
+                this.baseSize = Math.random() * 300 + 300;
+                this.angle = Math.random() * Math.PI * 2;
                 
                 const colors = ['#06b6d4', '#10b981', '#1e40af', '#020617']; 
                 this.color = colors[Math.floor(Math.random() * colors.length)];
@@ -498,12 +388,10 @@
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.angle += 0.03; // 呼吸速度，如果你觉得**“呼吸”（忽大忽小）**的速度也太慢了，想让它呼吸得急促一点，可以同时把下面的 0.015 改大一点（比如 0.03）
+                this.angle += 0.03;
 
-                // 🌬️ 呼吸感核心：利用正弦波改变大小
                 this.size = this.baseSize + Math.sin(this.angle) * 30; 
 
-                // 边界检查（无缝循环）
                 if (this.x < -this.size * 1.5) this.x = width + this.size;
                 if (this.x > width + this.size * 1.5) this.x = -this.size;
                 if (this.y < -this.size * 1.5) this.y = height + this.size;
@@ -521,7 +409,6 @@
             }
         }
 
-        // 初始化粒子
         for (let i = 0; i < 6; i++) { particles.push(new Particle()); }
 
         function animate() {
@@ -531,27 +418,20 @@
             animationId = requestAnimationFrame(animate);
         }
         
-        // ⚡️ 性能优化核心：IntersectionObserver
-        // 当 Hero 区域离开屏幕时，停止 Canvas 动画
-        const heroSection = document.querySelector('section'); // 获取第一个 section (Hero)
+        const aboutSection = document.getElementById('about');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // 进入视野：开始动画
                     if (!animationId) animate();
                 } else {
-                    // 离开视野：取消动画帧，暂停计算
                     cancelAnimationFrame(animationId);
                     animationId = null;
                 }
             });
-        }, { threshold: 0 }); // 只要有一点点可见就开始，完全不可见就停止
+        }, { threshold: 0 });
 
-        observer.observe(heroSection);
+        observer.observe(aboutSection);
 
-        // ==========================================
-        // 3. 动态渲染 & 交互
-        // ==========================================
         const grid = document.getElementById('projects-grid');
         window.handleImgError = function(img, title) {
             img.style.display = 'none';
@@ -577,7 +457,7 @@
                                 <img 
                                     src="${p.img}" 
                                     onerror="handleImgError(this, '${safeTitle}')" 
-                                    onload="removePlaceholder(this)" // 加载成功时调用函数移除占位符
+                                    onload="removePlaceholder(this)"
                                     alt="${p.titleEN}" 
                                     loading="lazy"
                                 >
@@ -641,19 +521,39 @@
             }, 300);
         }
 
-        const langBtn = document.getElementById('lang-btn');
-        const langText = document.getElementById('lang-text');
-        document.body.classList.add('cn-mode');
-        langBtn.addEventListener('click', () => {
-            document.body.classList.toggle('en-mode');
-            langText.textContent = document.body.classList.contains('en-mode') ? 'EN / CN' : 'CN / EN';
-        });
+        const setLang = (lang) => {
+            if (lang === 'cn') {
+                document.body.classList.remove('en-mode');
+                document.getElementById('lang-cn').classList.add('font-bold');
+                document.getElementById('lang-cn').classList.remove('opacity-50');
+                document.getElementById('lang-en').classList.remove('font-bold');
+                document.getElementById('lang-en').classList.add('opacity-50');
+                
+                document.getElementById('lang-cn-mobile').classList.add('font-bold');
+                document.getElementById('lang-cn-mobile').classList.remove('opacity-50');
+                document.getElementById('lang-en-mobile').classList.remove('font-bold');
+                document.getElementById('lang-en-mobile').classList.add('opacity-50');
+            } else {
+                document.body.classList.add('en-mode');
+                document.getElementById('lang-en').classList.add('font-bold');
+                document.getElementById('lang-en').classList.remove('opacity-50');
+                document.getElementById('lang-cn').classList.remove('font-bold');
+                document.getElementById('lang-cn').classList.add('opacity-50');
+                
+                document.getElementById('lang-en-mobile').classList.add('font-bold');
+                document.getElementById('lang-en-mobile').classList.remove('opacity-50');
+                document.getElementById('lang-cn-mobile').classList.remove('font-bold');
+                document.getElementById('lang-cn-mobile').classList.add('opacity-50');
+            }
+        };
+
+        document.getElementById('lang-cn').addEventListener('click', () => setLang('cn'));
+        document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+        document.getElementById('lang-cn-mobile').addEventListener('click', () => setLang('cn'));
+        document.getElementById('lang-en-mobile').addEventListener('click', () => setLang('en'));
 
         AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // ==========================================
-        // 4. 回到顶部按钮逻辑
-        // ==========================================
         const backToTopBtn = document.getElementById('back-to-top');
         
         window.addEventListener('scroll', () => {
@@ -667,30 +567,6 @@
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-
-        // ==========================================
-        // 5. 鼠标跟随动画 (必须补上这一段！)
-        // ==========================================
-        const follower = document.getElementById('cursor-follower');
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
-
-        // 监听鼠标移动
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        // 动画帧循环
-        function animateFollower() {
-            followerX += (mouseX - followerX) * 0.3;
-            followerY += (mouseY - followerY) * 0.3;
-            
-            follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
-            
-            requestAnimationFrame(animateFollower);
-        }
-        animateFollower();
         
     </script>
 </body>
